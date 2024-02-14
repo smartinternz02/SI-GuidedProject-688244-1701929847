@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rasa & Flask Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha256-PY/ZzXM8sNEzPjEMBZoEdv8h4iiQhrJxlO5FoLw5lxE=" crossorigin="anonymous" />
+
+    <style>
+        body {
+            background-image: url('/static/image20.png');
+            background-color: #222; /* Dark color */
+            color: #fff; /* Light color */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-repeat: no-repeat; /* Prevent background image from repeating */
+            background-size: cover; /* Cover the entire background */
+        }
+        
+        .container {
+            margin-top: 250px;
+            
+        }
+
+        .chat-widget-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .chat-widget-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid #0056b3;
+        }
+
+        .chat-widget-body {
+            padding: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .chat-widget-footer {
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .chat-input {
+            width: calc(100% - 40px);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px;
+            outline: none;
+            color: #000; /* Adjust input text color */
+            background-color: #fff; /* Adjust input background color */
+        }
+
+        .send-button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .close-button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .chat-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 576px) {
+            .chat-widget-container {
+                width: calc(100% - 40px);
+                left: 20px;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to my Chatbot</h1>
+    <h2>Let's switch the mood!</h2>
+    <button id="chat-widget-button" class="chat-button">Chat with us!</button>
+</div>
+<div class="chat-widget-container d-none">
+    <div class="chat-widget-header">
+        Chatbot
+        <button class="close-button float-end" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="chat-widget-body" id="chat-widget-messages">
+        <!-- Chat messages will be appended here -->
+    </div>
+    <div class="chat-widget-footer">
+        <input type="text" class="chat-input" id="chat-widget-input" placeholder="Type your message here..." aria-label="Type your message">
+        <button class="send-button" id="chat-widget-send-button" aria-label="Send">&#x27A4;</button>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Toggle chat widget visibility
+        $("#chat-widget-button").on("click", function() {
+            $(".chat-widget-container").toggleClass("d-none");
+        });
+
+        // Close chat widget
+        $(".close-button").on("click", function() {
+            $(".chat-widget-container").addClass("d-none");
+        });
+
+        // Handle user input in the chatbox
+        $("#chat-widget-send-button").on("click", function() {
+            sendMessage();
+        });
+
+        $("#chat-widget-input").keypress(function(event) {
+            if (event.which === 13) {
+                sendMessage();
+            }
+        });
+
+        // Function to send user message to the server
+        function sendMessage() {
+            let userMessage = $("#chat-widget-input").val().trim();
+            if (userMessage !== "") {
+                $("#chat-widget-input").val("");
+
+                // Append user message to the chatbox
+                $("#chat-widget-messages").append("<div><strong>You:</strong> " + userMessage + "</div>");
+
+                // Send user message to the server and get bot's response
+                $.ajax({
+                    type: "POST",
+                    url: "/webhook",
+                    contentType: "application/json",
+                    data: JSON.stringify({ message: userMessage }),
+                    success: function(data) {
+                        let botResponse = data.response;
+                        // Append bot's response to the chatbox
+                        $("#chat-widget-messages").append("<div><strong>Bot:</strong> " + botResponse + "</div>");
+                    },
+                    error: function() {
+                        // Handle error if needed
+                    }
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>

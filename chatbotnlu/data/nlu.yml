@@ -1,0 +1,108 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: inspiration
+  examples: |
+    - Give me an inspirational quote
+    - I need some inspiration
+    - Inspire me
+    - Share an inspiring quote
+    - Can you provide a motivational quote?
+    - I want to feel inspired
+    - Show me something inspiring
+
+- intent: motivation
+  examples: |
+    - Give me a motivational quote
+    - I need some motivation
+    - Motivate me
+    - Share a motivational quote
+    - Can you provide an inspiring quote?
+    - I want to feel motivated
+    - Show me something motivational
+
+- intent: success
+  examples: |
+    - Give me a success quote
+    - I need some success inspiration
+    - Share a quote about success
+    - Can you provide a quote for achieving goals?
+    - I want to feel motivated for success
+    - Show me something about success
+
+- intent: love
+  examples: |
+    - Give me a love quote
+    - I need some love inspiration
+    - Share a quote about love
+    - Can you provide a romantic quote?
+    - I want to feel the love
+    - Show me something about love
+
+- intent: funny
+  examples: |
+    - Give me a funny quote
+    - I need some laughter
+    - Share a humorous quote
+    - Can you provide a joke or funny saying?
+    - I want to brighten my day with humor
+    - Show me something funny
+
+- intent: satisfied
+  examples: |
+    - yes
+    - s
+    - yes i am satisfied
+    - satisfied
+    - superb
+    - yeah
+    - yup
+
+- intent: not_satisfied
+  examples: |
+    - no
+    - nope
+    - not satisfied
+    - n 
+    - na
+    - i am not satisfied
+    - not really 
+    - give me a new one
+    - i don't want this one
+    - i hate it
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?

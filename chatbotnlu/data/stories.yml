@@ -1,0 +1,44 @@
+version: "3.1"
+
+stories:
+
+- story: inspiration 
+  steps:
+  - intent: greet
+  - action: utter_ask
+  - intent: inspiration
+  - action: utter_inspiration
+  - action: utter_helpful
+
+- story: motivation
+  steps:
+  - intent: greet
+  - action: utter_ask
+  - intent: motivation
+  - action: utter_motivation
+  - action: utter_helpful
+
+- story: love
+  steps:
+  - intent: greet
+  - action: utter_ask
+  - intent: love
+  - action: utter_love
+  - action: utter_helpful
+
+- story: success
+  steps:
+  - intent: greet
+  - action: utter_ask
+  - intent: success
+  - action: utter_success 
+  - action: utter_helpful
+
+- story: funny
+  steps:
+  - intent: greet
+  - action: utter_ask
+  - intent: funny
+  - action: utter_funny
+  - action: utter_helpful
+

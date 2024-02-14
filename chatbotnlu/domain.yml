@@ -1,0 +1,71 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - inspiration
+  - motivation
+  - success
+  - love
+  - funny
+  - bot_challenge
+  - satisfied
+  - not_satisfied
+
+responses:
+  utter_ask:
+    - text: "Hey hi, please tell me which quotes you want for today (Inspirational/Motivational/Success/Love/Funny)"
+
+  utter_inspiration:
+    - text: "Here's an inspirational quote for you:\n\n'Believe you can, and you're halfway there.' - Theodore Roosevelt"
+    - text: "Here's an inspirational quote for you:\n\n'The only limit to our realization of tomorrow will be our doubts of today.' - Franklin D. Roosevelt"
+    - text: "Here's an inspirational quote for you:\n\n'Success is not final, failure is not fatal; It is the courage to continue that counts.' - Winston Churchill"
+    - text: "Here's an inspirational quote for you:\n\n'The future belongs to those who believe in the beauty of their dreams.' - Eleanor Roosevelt"
+    - text: "Here's an inspirational quote for you:\n\n'Don't watch the clock; do what it does. Keep going.' - Sam Levenson"
+
+  utter_motivation:
+    - text: "Here's a motivational quote for you:\n\n'Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work.' - Steve Jobs"
+    - text: "Here's a motivational quote for you:\n\n'The only way to do great work is to love what you do.' - Steve Jobs"
+    - text: "Here's a motivational quote for you:\n\n'Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.' - Christian D. Larson"
+    - text: "Here's a motivational quote for you:\n\n'Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.' - Albert Schweitzer"
+    - text: "Here's a motivational quote for you:\n\n'The harder you work for something, the greater you'll feel when you achieve it.'"
+  
+  utter_success:
+    - text: "Here's a success quote for you:\n\n'Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.' - Albert Schweitzer"
+    - text: "Here's a success quote for you:\n\n'Success usually comes to those who are too busy to be looking for it.' - Henry David Thoreau"
+    - text: "Here's a success quote for you:\n\n'Success is not in what you have, but who you are.' - Bo Bennett"
+    - text: "Here's a success quote for you:\n\n'The secret of success is to know something nobody else knows.' - Aristotle Onassis"
+    - text: "Here's a success quote for you:\n\n'Success is not just about making money. It's about making a difference.'"
+
+  utter_love:
+    - text: "Here's a love quote for you:\n\n'Love is composed of a single soul inhabiting two bodies.' - Aristotle"
+    - text: "Here's a love quote for you:\n\n'The best thing to hold onto in life is each other.' - Audrey Hepburn"
+    - text: "Here's a love quote for you:\n\n'Love is not finding someone to live with; it's finding someone you can't live without.' - Rafael Ortiz"
+    - text: "Here's a love quote for you:\n\n'Love recognizes no barriers. It jumps hurdles, leaps fences, penetrates walls to arrive at its destination full of hope.' - Maya Angelou"
+    - text: "Here's a love quote for you:\n\n'Love is the greatest refreshment in life.' - Pablo Picasso"
+
+  utter_funny:
+    - text: "Here's a funny quote for you:\n\n'The best way to predict the future is to create it yourself, using a magic 8-ball.' - Unknown"
+    - text: "Here's a funny quote for you:\n\n'I asked the universe for a bike, but I know God doesn't work that way. So I stole a bike and asked for forgiveness.' - Emo Philips"
+    - text: "Here's a funny quote for you:\n\n'My fake plants died because I did not pretend to water them.' - Mitch Hedberg"
+    - text: "Here's a funny quote for you:\n\n'I'm not superstitious, but I am a little stitious.' - Michael Scott (The Office)"
+    - text: "Here's a funny quote for you:\n\n'I used to think I was indecisive, but now I'm not so sure.' - Unknown"
+  
+  utter_helpful:
+    - text: "Is the quote helpful to you, If yes type 'yes' else type 'no' "
+
+  utter_satisfied:
+    - text: "Thanks for your feedback\nIf you want some more Quotes from the bot then please mention which type of quotes you want."
+
+  utter_notsatisfied:
+    - text: "Sorry to here that.\nIf you want some more Quotes from the bot then please mention which type of quotes you want."
+
+  utter_goodbye:
+    - text: "Bye"
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
